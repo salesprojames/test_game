@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Box Game</title>
+  <style>
+    canvas {
+      border: solid 1px #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="400"></canvas>
+  <script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    context.fillText("The Canvas Works",150,150);
+    var yellowBox = {
+      x: 380,
+      y: 580,
+      speed: 4
+    };
+
+    var boxMovement = {
+      37: false,
+      38: false,
+      39: false,
+      40: false
+    };
+
+    document.addEventListener("keydown", function(event){
+      boxMovement[event.keyCode] = true;
+      moveBox(boxMovement)
+    },false)
+
+    document.addEventListener("keyup", function(event){
+      boxMovement[event.keyCode] = false;
+    },false)
+
+    function moveBox(boxMovement){
+      if (boxMovement.37 == true){
+        yellowBox.x -= yellowBox.speed
+      } else if (boxMovement.38 == true){
+        yellowBox.x += yellowBox.speed
+      } else if (boxMovement.39 == true){
+        yellowBox.y -= yellowBox.speed
+      } else if (boxMovement.40 == true){
+        yellowBox.y += yellowBox.speed
+      }
+    }
+
+  </script>
+</body>
+</html>
